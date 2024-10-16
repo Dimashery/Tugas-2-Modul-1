@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.todo-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #aaa;
+    text-align: center;
+    width: 300px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Pastikan tombol berada di tengah vertikal */
+    flex-wrap: wrap; /* Membuat elemen dalam li dapat terbungkus */
+}
+
+li span {
+    flex-grow: 1; /* Biarkan teks mengambil ruang yang tersedia */
+    padding-right: 10px; /* Ruang antara teks dan tombol */
+    overflow: hidden; /* Menyembunyikan teks yang lebih panjang */
+    text-overflow: ellipsis; /* Menampilkan elipsis jika teks terlalu panjang */
+    white-space: nowrap; /* Mencegah teks menjadi multiline */
+}
+
+li button {
+    background-color: #ff4d4d; /* Warna latar belakang untuk tombol hapus */
+    margin-left: 5px; /* Tambahkan margin untuk jarak antara tombol */
+}
+
+li button.edit {
+    background-color: #5c6bc0; /* Warna latar belakang untuk tombol edit */
+}
