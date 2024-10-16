@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="kalkualtor_style.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" class="display" readonly>
+        <div class="buttons">
+            <button class="button function" onclick="clearScreen()">C</button>
+            <button class="button function" onclick="deleteLast()">CE</button>
+            <button class="button operator" onclick="insert('%')">%</button>
+            <button class="button operator" onclick="insert('/')">/</button>
+            <button class="button number" onclick="insert('7')">7</button>
+            <button class="button number" onclick="insert('8')">8</button>
+            <button class="button number" onclick="insert('9')">9</button>
+            <button class="button operator" onclick="insert('*')">*</button>
+            <button class="button number" onclick="insert('4')">4</button>
+            <button class="button number" onclick="insert('5')">5</button>
+            <button class="button number" onclick="insert('6')">6</button>
+            <button class="button operator" onclick="insert('-')">-</button>
+            <button class="button number" onclick="insert('1')">1</button>
+            <button class="button number" onclick="insert('2')">2</button>
+            <button class="button number" onclick="insert('3')">3</button>
+            <button class="button operator" onclick="insert('+')">+</button>
+            <button class="button number" onclick="insert('0')">0</button>
+            <button class="button number" onclick="insert('.')">.</button>
+            <button class="button operator" onclick="calculate()">=</button>
+        </div>
+    </div>
+    <script src="kalkulator_script.js"></script>
+</body>
+</html>
