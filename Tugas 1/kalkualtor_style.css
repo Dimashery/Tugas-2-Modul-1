@@ -1,0 +1,60 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #d1c4e9;
+    margin: 0;
+}
+
+.calculator {
+    width: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.display {
+    background-color: #1a1a3d;
+    color: white;
+    text-align: right;
+    padding: 20px;
+    font-size: 48px;
+    box-sizing: border-box;
+    border: none; /* Menghapus border default */
+    width: 100%; /* Mengatur lebar penuh */
+    overflow: hidden; /* Mencegah overflow */
+    white-space: nowrap; /* Mencegah baris baru */
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.button {
+    padding: 20px;
+    font-size: 24px;
+    border: 1px solid #444;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.button.operator {
+    background-color: #7e57c2;
+    color: white;
+}
+
+.button.function {
+    background-color: #5c6bc0;
+    color: white;
+}
+
+.button.number {
+    background-color: #424242;
+    color: white;
+}
+
+.button:hover {
+    opacity: 0.9; /* Efek hover */
+}
