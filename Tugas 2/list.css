@@ -1,73 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
 }
 
-.todo-container {
-    background: #fff;
-    padding: 20px;
+.container {
+    background-color: #ffffff;
+    width: 400px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px #aaa;
-    text-align: center;
-    width: 300px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"] {
+.header {
+    background: linear-gradient(135deg, #7e57c2, #5c6bc0);
+    padding: 20px;
+    text-align: center;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.header h2 {
+    margin-bottom: 15px;
+}
+
+.header input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-button {
+.header button {
+    background-color: #f46b45;
+    color: white;
     padding: 10px 20px;
-    font-size: 16px;
     border: none;
-    background-color: #007bff;
-    color: #fff;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.task-list {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word; /* Prevent overflow of long text */
+    white-space: normal;
+}
+
+th {
+    background-color: #f7f7f7;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+    word-wrap: break-word; /* Ensure long text breaks into new lines */
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap; /* Prevent wrapping of status */
+}
+
+.status.pending {
+    background-color: #81c784;
+    color: white;
+}
+
+.status.completed {
+    background-color: #ffb74d;
+    color: white;
+}
+
+button.delete-btn, button.edit-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+button.delete-btn {
+    color: #f46b45;
+    margin-left: 10px; /* Add margin between buttons */
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+button.edit-btn {
+    color: #5c6bc0;
 }
 
-li {
-    padding: 10px;
-    margin: 5px 0;
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.actions {
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Pastikan tombol berada di tengah vertikal */
-    flex-wrap: wrap; /* Membuat elemen dalam li dapat terbungkus */
+    justify-content: flex-end;
+    gap: 10px; /* Add spacing between action buttons */
+    white-space: nowrap; /* Prevent button wrapping */
 }
 
-li span {
-    flex-grow: 1; /* Biarkan teks mengambil ruang yang tersedia */
-    padding-right: 10px; /* Ruang antara teks dan tombol */
-    overflow: hidden; /* Menyembunyikan teks yang lebih panjang */
-    text-overflow: ellipsis; /* Menampilkan elipsis jika teks terlalu panjang */
-    white-space: nowrap; /* Mencegah teks menjadi multiline */
+td.actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px; /* Ensure buttons have enough space */
 }
 
-li button {
-    background-color: #ff4d4d; /* Warna latar belakang untuk tombol hapus */
-    margin-left: 5px; /* Tambahkan margin untuk jarak antara tombol */
-}
-
-li button.edit {
-    background-color: #5c6bc0; /* Warna latar belakang untuk tombol edit */
-}

@@ -1,40 +1,85 @@
-let editIndex = -1; // Menyimpan index tugas yang sedang diedit
+let taskList = [];
+let isEditing = false;
+let currentTaskIndex = null;
 
 function addTask() {
     const taskInput = document.getElementById('taskInput');
-    const task = taskInput.value.trim(); // Menghapus spasi di awal dan akhir
+    const task = taskInput.value;
     
     if (task === '') {
-        alert('Please enter a task!');
+        alert('Please enter a task');
         return;
     }
 
-    const taskList = document.getElementById('taskList');
-    const li = document.createElement('li');
-
-    if (editIndex === -1) {
-        li.innerHTML = `<span>${task}</span> 
-                        <button class="delete" onclick="removeTask(this)">Delete</button> 
-                        <button class="edit" onclick="editTask(this)">Edit</button>`;
-        taskList.appendChild(li);
+    if (isEditing) {
+        // Update the existing task if in editing mode
+        taskList[currentTaskIndex].task = task;
+        isEditing = false;
+        currentTaskIndex = null;
     } else {
-        taskList.children[editIndex].innerHTML = `<span>${task}</span> 
-                                                    <button class="delete" onclick="removeTask(this)">Delete</button> 
-                                                    <button class="edit" onclick="editTask(this)">Edit</button>`;
-        editIndex = -1; // Reset index setelah mengedit
+        const taskObj = {
+            task: task,
+            status: 'pending'
+        };
+        taskList.push(taskObj);
     }
 
-    taskInput.value = '';
+    renderTasks();
+    taskInput.value = ''; // Reset input field after adding/updating
+    document.getElementById('addButton').innerText = 'Add'; // Reset button text
 }
 
-function removeTask(button) {
-    const li = button.parentElement;
-    li.remove();
+function renderTasks() {
+    const taskBody = document.getElementById('taskBody');
+    taskBody.innerHTML = '';
+
+    taskList.forEach((taskObj, index) => {
+        const tr = document.createElement('tr');
+
+        const tdTask = document.createElement('td');
+        tdTask.textContent = taskObj.task;
+        tdTask.classList.add('task-text');
+
+        const tdStatus = document.createElement('td');
+        const statusSpan = document.createElement('span');
+        statusSpan.classList.add('status');
+        statusSpan.textContent = taskObj.status;
+        statusSpan.classList.add(taskObj.status === 'pending' ? 'pending' : 'completed');
+        tdStatus.appendChild(statusSpan);
+
+        const tdActions = document.createElement('td');
+        tdActions.classList.add('actions');
+
+        const editBtn = document.createElement('button');
+        editBtn.innerHTML = '✏️';
+        editBtn.classList.add('edit-btn');
+        editBtn.onclick = () => editTask(index);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.innerHTML = '🗑️';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.onclick = () => deleteTask(index);
+
+        tdActions.appendChild(editBtn);
+        tdActions.appendChild(deleteBtn);
+
+        tr.appendChild(tdTask);
+        tr.appendChild(tdStatus);
+        tr.appendChild(tdActions);
+
+        taskBody.appendChild(tr);
+    });
 }
 
-function editTask(button) {
-    const li = button.parentElement;
-    const taskText = li.firstChild.textContent.trim(); // Ambil teks tugas
-    document.getElementById('taskInput').value = taskText; // Tampilkan teks di input
-    editIndex = Array.from(li.parentElement.children).indexOf(li); // Simpan index tugas yang sedang diedit
+function editTask(index) {
+    const taskInput = document.getElementById('taskInput');
+    taskInput.value = taskList[index].task; // Set the input box with the current task value
+    isEditing = true;
+    currentTaskIndex = index;
+    document.getElementById('addButton').innerText = 'Update'; // Change button text to 'Update'
+}
+
+function deleteTask(index) {
+    taskList.splice(index, 1);
+    renderTasks();
 }
