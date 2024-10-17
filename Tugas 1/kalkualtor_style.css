@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -8,7 +15,8 @@ body {
 }
 
 .calculator {
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -21,10 +29,10 @@ body {
     padding: 20px;
     font-size: 48px;
     box-sizing: border-box;
-    border: none; /* Menghapus border default */
-    width: 100%; /* Mengatur lebar penuh */
-    overflow: hidden; /* Mencegah overflow */
-    white-space: nowrap; /* Mencegah baris baru */
+    border: none; /* Remove border */
+    width: 100%; /* Full width */
+    overflow: hidden; /* Prevent overflow */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .buttons {
@@ -56,5 +64,28 @@ body {
 }
 
 .button:hover {
-    opacity: 0.9; /* Efek hover */
+    opacity: 0.9; /* Hover effect */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .display {
+        font-size: 36px; /* Smaller text for smaller screens */
+        padding: 15px;
+    }
+    .button {
+        padding: 15px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .display {
+        font-size: 28px; /* Smaller text for smaller screens */
+        padding: 10px;
+    }
+    .button {
+        padding: 10px;
+        font-size: 18px;
+    }
 }

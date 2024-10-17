@@ -11,11 +11,13 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
+    padding: 20px;
 }
 
 .container {
     background-color: #ffffff;
-    width: 400px;
+    width: 100%;
+    max-width: 500px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -39,6 +41,7 @@ body {
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
+    font-size: 16px;
 }
 
 .header button {
@@ -58,29 +61,46 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; /* Ensures fixed table layout for better control */
 }
 
 th, td {
     padding: 10px;
     text-align: left;
-    word-wrap: break-word; /* Prevent overflow of long text */
-    white-space: normal;
+    border-bottom: 1px solid #eee;
+    word-wrap: break-word; /* Allows long words to break */
+    overflow-wrap: break-word; /* Ensures text breaks within its cell */
+    max-width: 100px; /* Max width for columns */
+    overflow: hidden; /* Hide overflow text */
+    white-space: nowrap; /* Prevent text wrapping unless forced */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowed text */
 }
 
 th {
     background-color: #f7f7f7;
 }
 
-td {
-    border-bottom: 1px solid #eee;
-    word-wrap: break-word; /* Ensure long text breaks into new lines */
+td.task-text {
+    max-width: 200px; /* Specific width for the task column */
+}
+
+td.status {
+    max-width: 100px; /* Set smaller width for status column */
+}
+
+td.actions {
+    max-width: 100px; /* Set width for actions column */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px; /* Ensure buttons have enough space */
 }
 
 .status {
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 14px;
-    white-space: nowrap; /* Prevent wrapping of status */
+    white-space: nowrap;
 }
 
 .status.pending {
@@ -102,24 +122,37 @@ button.delete-btn, button.edit-btn {
 
 button.delete-btn {
     color: #f46b45;
-    margin-left: 10px; /* Add margin between buttons */
 }
 
 button.edit-btn {
     color: #5c6bc0;
 }
 
-.actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px; /* Add spacing between action buttons */
-    white-space: nowrap; /* Prevent button wrapping */
-}
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
 
-td.actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px; /* Ensure buttons have enough space */
-}
+    .header h2 {
+        font-size: 24px;
+    }
 
+    .header input, .header button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    th, td {
+        font-size: 14px;
+    }
+
+    td.task-text {
+        max-width: 150px; /* Reduce task column width on smaller screens */
+    }
+
+    button.delete-btn, button.edit-btn {
+        font-size: 16px;
+    }
+}

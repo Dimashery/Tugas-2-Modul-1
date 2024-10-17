@@ -12,7 +12,6 @@ function addTask() {
     }
 
     if (isEditing) {
-        // Update the existing task if in editing mode
         taskList[currentTaskIndex].task = task;
         isEditing = false;
         currentTaskIndex = null;
@@ -25,8 +24,8 @@ function addTask() {
     }
 
     renderTasks();
-    taskInput.value = ''; // Reset input field after adding/updating
-    document.getElementById('addButton').innerText = 'Add'; // Reset button text
+    taskInput.value = '';
+    document.getElementById('addButton').innerText = 'Add';
 }
 
 function renderTasks() {
@@ -73,10 +72,10 @@ function renderTasks() {
 
 function editTask(index) {
     const taskInput = document.getElementById('taskInput');
-    taskInput.value = taskList[index].task; // Set the input box with the current task value
+    taskInput.value = taskList[index].task;
     isEditing = true;
     currentTaskIndex = index;
-    document.getElementById('addButton').innerText = 'Update'; // Change button text to 'Update'
+    document.getElementById('addButton').innerText = 'Update';
 }
 
 function deleteTask(index) {

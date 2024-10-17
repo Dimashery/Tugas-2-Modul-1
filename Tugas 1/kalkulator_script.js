@@ -2,27 +2,27 @@ let expression = '';
 
 function insert(num) {
     expression += num;
-    document.getElementById('result').value = expression; // Menampilkan ekspresi yang diperbarui
+    document.getElementById('result').value = expression; // Update display
 }
 
 function calculate() {
     try {
         expression = expression.replace('^', '**');
         let result = eval(expression);
-        document.getElementById('result').value = result; // Menampilkan hasil
-        expression = ''; // Mengosongkan ekspresi setelah menghitung
+        document.getElementById('result').value = result; // Show result
+        expression = ''; // Clear expression after calculation
     } catch (e) {
-        document.getElementById('result').value = 'Error'; // Menangani kesalahan
+        document.getElementById('result').value = 'Error'; // Handle error
         expression = '';
     }
 }
 
 function clearScreen() {
-    expression = ''; // Mengosongkan ekspresi
-    document.getElementById('result').value = ''; // Mengosongkan hasil tampilan
+    expression = ''; // Clear expression
+    document.getElementById('result').value = ''; // Clear display
 }
 
 function deleteLast() {
-    expression = expression.slice(0, -1); // Menghapus karakter terakhir dari ekspresi
-    document.getElementById('result').value = expression; // Memperbarui tampilan
+    expression = expression.slice(0, -1); // Remove last character
+    document.getElementById('result').value = expression; // Update display
 }
