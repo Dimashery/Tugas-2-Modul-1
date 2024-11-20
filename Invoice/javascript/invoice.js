@@ -1,38 +1,33 @@
-// Ambil data pesanan dari localStorage
+// Ambil data dari localStorage
 const orderData = JSON.parse(localStorage.getItem("order"));
 
-// Cek apakah ada data pesanan
+// Ambil elemen untuk menampilkan data transaksi
+const itemName = document.getElementById('item-name');
+const itemPrice = document.getElementById('item-price');
+const taxElement = document.getElementById('tax');
+const totalPriceElement = document.getElementById('total-price');
+
+// Periksa apakah data order ada
 if (orderData) {
-  // Ambil elemen untuk menampilkan item dan harga
-  const itemsSection = document.querySelector(".items-section");
-  const priceSection = document.querySelector(".price-section");
-  
-  // Menampilkan nama produk dan kuantitas di bagian item
-  itemsSection.innerHTML = `
-    <h2>Items:</h2>
-    <p>${orderData.name} x${orderData.quantity}</p>
-    <hr>
-  `;
-  
-  // Menampilkan harga produk, PPN, dan total di bagian harga
-  priceSection.innerHTML = `
-    <h2>Price</h2>
-    <p>${orderData.name} x${orderData.quantity} .......................... Rp. ${orderData.price.toLocaleString()}</p>
-    <hr>
-    <p>PPN (10%) : Rp. ${(orderData.total * 0.1).toLocaleString()}</p>
-    <p>Discount : Rp. 0.00</p>
-    <h3>Total Price : <span class="total-price">Rp. ${(orderData.total * 1.1).toLocaleString()}</span></h3>
-  `;
+    // Menampilkan nama produk dan detail transaksi
+    itemName.textContent = `${orderData.name} x${orderData.quantity}`;
+    itemPrice.textContent = `${orderData.name} x${orderData.quantity} .......................... Rp. ${orderData.price.toLocaleString("id-ID")},00`;
+
+    // Menghitung PPN (10%)
+    const tax = Math.round(orderData.total * 0.1);
+    taxElement.textContent = `PPN (10%) : Rp. ${tax.toLocaleString("id-ID")},00`;
+
+    // Menampilkan total harga
+    const totalPrice = orderData.total + tax;
+    totalPriceElement.textContent = `Rp. ${totalPrice.toLocaleString("id-ID")},00`;
 } else {
-  // Jika tidak ada data pesanan di localStorage, tampilkan pesan error
-  alert("No order data found!");
+    // Jika tidak ada data pesanan, tampilkan pesan dan arahkan ke halaman produk
+    alert("No order data found! Please select a product first.");
+    window.location.href = "../../Product/html/product.html";
 }
 
-// Pilih tombol "Buy Again"
+// Fungsi untuk mengarahkan ke halaman produk lagi
 const buyAgainButton = document.getElementById('buyAgainBtn');
-
-// Tambahkan event listener untuk tombol
 buyAgainButton.addEventListener('click', () => {
-  // Redirect ke halaman produk untuk membeli lagi
-  window.location.href = '../../Product/html/product.html'; // Ganti dengan URL halaman produk jika perlu
+    window.location.href = '../../Product/html/product.html'; // Redirect ke halaman produk
 });
