@@ -100,6 +100,25 @@ body {
   .summary h3 {
     margin: 10px 0;
   }
+
+  .delete-btn {
+    background-color: #dc4353;
+    border: none;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 10px;
+    margin-right: 10px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #e04352;
+  }
+  
   
   hr {
     border: none;
