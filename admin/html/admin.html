@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product - Cooleyah EverydaY</title>
-  <link rel="stylesheet" href="../css/product.css">
+  <title>Admin - Cooleyah EverydaY</title>
+  <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
   <header>
@@ -13,10 +13,10 @@
       <nav>
         <ul>
           <li><a href="../../Home/html/home.html">Home</a></li>
-          <li><a href="product.html" class="active">Product</a></li>
+          <li><a href="../../Product/html/product.html">Product</a></li>
           <li><a href="../../Buy/html/buy.html">Buy</a></li>
           <li><a href="../../whats_new/html/whats_new.html">What's New?</a></li>
-          <li><a href="../../admin/html/admin.html">Admin</a></li>
+          <li><a href="admin.html" class="active">Admin</a></li>
         </ul>
       </nav>
       <div class="auth-buttons">
@@ -27,10 +27,22 @@
   </header>
 
   <main>
-    <section class="product-section">
-      <h2>Our Products</h2>
-      <div id="product-container" class="product-container">
-        <!-- Produk akan dimuat secara dinamis dengan JavaScript -->
+    <section class="admin-section">
+      <h2>Manage Whats New</h2>
+      <div class="admin-container">
+        <!-- Form untuk Menambah Produk -->
+        <form id="product-form">
+          <input type="text" id="name" placeholder="Product Name" required />
+          <input type="text" id="image" placeholder="Image URL" required />
+          <textarea id="description" placeholder="Description" required></textarea>
+          <input type="number" id="price" placeholder="Price" required />
+          <button type="submit">Add Product</button>
+        </form>
+
+        <!-- Daftar Produk yang Ada -->
+        <div id="product-list">
+          <!-- Produk akan ditampilkan di sini oleh JavaScript -->
+        </div>
       </div>
     </section>
   </main>
@@ -60,6 +72,6 @@
     </div>
   </footer>
 
-  <script src="../javascript/product.js"></script>
+  <script src="../javascript/admin.js"></script>
 </body>
 </html>
